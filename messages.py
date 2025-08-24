@@ -1,5 +1,7 @@
 from aiogram.types import Message
 from aiogram import Router, F
+from keyboards import menu_items
+
 
 router = Router()
 
@@ -15,3 +17,8 @@ async def info(message:Message):
 @router.message(F.text.contains('raqam'))
 async def info(message:Message):
     await message.answer(text="Sizga qanday raqam kerak? Men 5 ni taklf qilaman!")
+    
+    
+@router.message(F.text == "📱Menu")
+async def asnwer_menu(message:Message):
+    await message.answer(text="Quyidagilardan birini tanlang", reply_markup=menu_items)
